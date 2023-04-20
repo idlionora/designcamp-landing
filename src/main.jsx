@@ -6,11 +6,29 @@ import './index.css';
 
 const themeOveride = createTheme({
 	typography: {
-		fontFamily: 'Plus Jakarta Sans',
+		fontFamily: "'Plus Jakarta Sans', 'sans-serif'",
 		fontWeightLight: 400,
-		fontWeightRegular:500,
+		fontWeightRegular: 500,
 		fontWeightMedium: 600,
-		fontWeightBold: 700
+		fontWeightBold: 700,
+		h1: {
+			fontFamily: "'Montagu Slab', 'serif'",
+			fontWeight: 600,
+			fontSize: '4.5rem',
+			lineHeight: 1.2
+		},
+		h2: {
+			fontFamily: "'Montagu Slab', 'serif'",
+			fontWeight: 600,
+			fontSize: '2.25rem',
+			lineHeight: 1.2
+		},
+		h3: {
+			fontFamily: "'Plus Jakarta Sans', 'sans-serif'",
+			fontWeight: 700,
+			fontSize: '1.25rem',
+			lineHeight: 1.2
+		},
 	},
 });
 
