@@ -4,6 +4,16 @@
     * {
         box-sizing: border-box;
     }
+    body {
+        font-family: 'Plus Jakarta Sans', 'sans-serif';
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 1.2;
+        margin: 0;
+    }
+    p {
+        margin: 0;
+    }
 }
 @tailwind components;
 @tailwind utilities;
