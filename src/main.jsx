@@ -10,7 +10,7 @@ const themeOveride = createTheme({
 		yellowOpaque: {
 			light: '#fde047',
 			main: '#facc15',
-			dark: '#fbbf24',
+			dark: '#ffa500',
 			contrastText: '#fff',
 		},
 	},
