@@ -6,7 +6,23 @@ import { ButtonDefault, ButtonCapsule } from '../components/Buttons';
 import { UnderlineDecor } from '../components/Particles';
 import navLogo from '../assets/logo-designcamp.png';
 import iconClose from '../assets/icon-close.png';
+import imgBanner from '../assets/bg-banner.svg';
 
+const BannerGrid = ({ title, subtitle, line = true }) => {
+	return (
+		<Grid xs={6} md={3} className="flex flex-col items-center justify-center relative">
+			{line ? (
+				<div
+					className={`w-px h-[60px] bg-white absolute right-0 ${
+						line === 'break' ? 'invisible [@media(min-width:900px)]:visible' : ''
+					}`}
+				/>
+			) : null}
+			<p className="font-heading font-semibold text-5xl">{title}</p>
+			<p>{subtitle}</p>
+		</Grid>
+	);
+};
 
 function Home() {
 	return (
@@ -17,7 +33,7 @@ function Home() {
 						className="px-4 py-3.5 relative text-center flex justify-center items-center"
 						maxWidth="xl"
 					>
-						<p>Sign up now and get discounts up to 90% off!</p>
+						<p>Sign up now and get discounts up to 90%&nbsp;off!</p>
 						<img
 							className="ml-4 w-3 h-3 sm:absolute right-4"
 							src={iconClose}
@@ -32,7 +48,7 @@ function Home() {
 							src={navLogo}
 							alt="DesignCamp Logo"
 						/>
-						<div className="flex flex-col md:flex-row items-end gap-x-1">
+						<div className="flex flex-col md:flex-row items-end gap-1">
 							<ButtonDefault
 								width="w-[115px]"
 								size="lg"
@@ -46,10 +62,10 @@ function Home() {
 			</AppBar>
 			<section id="banner" className="text-center relative">
 				<Container
-					className="flex flex-col items-center px-4 md:px-5 py-[120px]"
+					className="flex flex-col items-center px-4 md:px-5 py-[120px] overflow-x-hidden"
 					maxWidth="xl"
 				>
-					<h1>
+					<h1 className="text-5xl sm:text-7xl">
 						Transform Your <UnderlineDecor text="Creative" />
 						<br />
 						Vision into <UnderlineDecor text="Reality" />
@@ -70,17 +86,25 @@ function Home() {
 						<ButtonCapsule text="Start Learning" arrow={true} />
 					</div>
 				</Container>
-				<Grid container spacing={0} className="bg-neutral-dark text-white h-64">
-					<Grid md={3} className="flex items-center justify-center">
-						<p>dnasdkja</p>
-					</Grid>
-					<Grid md={3}>dsalkjda</Grid>
-					<Grid md={3}>dsbakjbnakdsb</Grid>
-					<Grid md={3}>djanhkbasdhba</Grid>
-				</Grid>
+				<div className="w-full h-[39.364rem] absolute bottom-0 z-[-1] overflow-hidden">
+					<img
+						className="h-full xl:w-full object-cover absolute translate-x-[-50%]"
+						src={imgBanner}
+						alt=""
+					/>
+				</div>
+				<div className="bg-neutral-dark">
+					<Container className="px-0" maxWidth="xl">
+						<Grid container spacing={0} className="bg-neutral-dark text-white h-64">
+							<BannerGrid title="2000+" subtitle="members" />
+							<BannerGrid title="500+" subtitle="positive reviews" line="break" />
+							<BannerGrid title="300+" subtitle="videos" />
+							<BannerGrid title="30+" subtitle="modules" line={false} />
+						</Grid>
+					</Container>
+				</div>
 			</section>
-			<section className="mb-[90px]">
-			</section>
+			<section className="mb-[90px]"></section>
 		</>
 	);
 }
