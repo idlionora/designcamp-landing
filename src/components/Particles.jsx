@@ -4,7 +4,7 @@ export const UnderlineDecor = ({
 }) => {
     let decorHeight;
     if (size === 'h1') {
-        decorHeight = 'bottom-3.5';
+        decorHeight = 'bottom-0.5 md:bottom-1.5';
     } else if (size === 'h2') {
         decorHeight = 'bottom-1'
     } else decorHeight = size;
