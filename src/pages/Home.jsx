@@ -3,56 +3,52 @@ import AppBar from '@mui/material/AppBar';
 import Container from '@mui/material/Container';
 import Toolbar from '@mui/material/Toolbar';
 import Grid from '@mui/material/Unstable_Grid2/Grid2';
-import Paper from '@mui/material/Paper';
 import { ButtonDefault, ButtonCapsule } from '../components/Buttons';
-import { UnderlineDecor } from '../components/Particles';
+import { UnderlineDecor, BannerGrid, CardGrid } from '../components/Particles';
 import navLogo from '../assets/logo-designcamp.png';
 import iconClose from '../assets/icon-close.svg';
 import iconCheck from '../assets/icon-check.svg';
 import imgBanner from '../assets/bg-banner.svg';
 import imgVidthumb from '../assets/vidthumbnail.png';
 
-const BannerGrid = ({ title, subtitle, line = true }) => {
-	return (
-		<Grid xs={6} md={3} className="flex flex-col items-center justify-center relative">
-			{line ? (
-				<div
-					className={`w-px h-[60px] bg-white absolute right-0 ${
-						line === 'break' ? 'invisible [@media(min-width:900px)]:visible' : ''
-					}`}
-				/>
-			) : null}
-			<p className="font-heading font-semibold text-5xl">{title}</p>
-			<p>{subtitle}</p>
-		</Grid>
-	);
-};
-
-const CardGrid = ({number = "1", title = "Insert Title Here", text = "Insert long post text here. The text will be truncated in two lines, no matter how long."}) => {
-	return (
-		<Grid xs={12} sm={6} md={4}>
-			<Paper
-				elevation={6}
-				className="rounded-[20px] px-5 py-5 lg:px-9 lg:py-7 text-left h-full"
-			>
-				<div className="w-full h-full flex flex-col items-start">
-					<div className="flex items-center">
-						<div className="flex w-8 h-8 self-start justify-center items-center rounded-[5px] bg-theme-yellow mr-[14px] shrink-0 font-bold text-xl leading-6">
-							{number}
-						</div>
-						<h3>{title}</h3>
-					</div>
-					<div className='grow flex flex-col justify-center'>
-						<p className="line-clamp-2 my-5 lg:my-7">{text}</p>
-					</div>
-					<ButtonDefault text="Lebih lanjut" />
-				</div>
-			</Paper>
-		</Grid>
-	);
+function createRow(category, selflearnDesc, designcampDesc) {
+	return { category, selflearnDesc, designcampDesc };
 }
+const comparisonRows = [
+	createRow(
+		'Learning Path',
+		'You must create your own learning path, which can be difficult without guidance or knowledge of the full scope of graphic design.',
+		'Offers a structured learning path that covers the fundamental principles and techniques of graphic design.'
+	),
+	createRow(
+		'Learning Resources',
+		'You must rely on free or low-cost resources available online, which may be incomplete or inconsistent in quality.',
+		'Offers you high-quality video tutorials, interactive exercises, and real-world projects.'
+	),
+	createRow(
+		'Mentorship and Support',
+		'You must rely on your own knowledge and research for feedback and guidance',
+		'Offers you mentorship and support from experienced instructors and peers, providing you with valuable feedback and guidance throughout the learning process.'
+	),
+	createRow(
+		'Hands-On Practice',
+		'Limited opportunities for hands-on practice and application of learned skills.',
+		'Offers you real-world projects and design challenges that allow you to apply your learned skills and build your portfolio.'
+	),
+	createRow(
+		'Affordability',
+		'You can find free or low-cost resources online, but it can be difficult to determine which resources are reliable and effective.',
+		'Requires an investment in tuition fees, but provides you with valuable resources, mentorship, and hands-on practice to help build your skills and portfolio.'
+	),
+	createRow(
+		'Friends',
+		'You are learning on your own and may not have a community of fellow learners to share ideas, ask questions, or collaborate with.',
+		'You will have a community of peers to share ideas, collaborate with, and receive feedback from.'
+	),
+];
 
 function Home() {
+	const [loadVideo, setLoadVideo] = useState(false);
 	const facilities = [
 		'Lifetime video lessons',
 		'Live Q&A sessions',
@@ -61,7 +57,7 @@ function Home() {
 		'e-Certificate',
 		'Portfolio reviews',
 	];
-	const [loadVideo, setLoadVideo] = useState(false);
+
 	return (
 		<>
 			<AppBar className="bg-white text-black" position="static">
@@ -79,7 +75,7 @@ function Home() {
 					</Container>
 				</div>
 				<Container className="px-4" maxWidth="xl">
-					<Toolbar className="h-fit md:h-[100px] justify-between py-2" disableGutters>
+					<Toolbar className="md:h-[100px] justify-between py-2" disableGutters>
 						<img
 							className="w-[215px] md:w-[230px]"
 							src={navLogo}
@@ -231,8 +227,25 @@ function Home() {
 					</div>
 				</Container>
 			</section>
-			<section id="comparison" className='bg-neutral-dark text-white'>
-				<Container className="px-4 md:px-5 py-[90px]" maxWidth="xl"></Container>
+			<section id="comparison" className="bg-neutral-dark text-white">
+				<Container className="px-4 md:px-5 py-[90px]" maxWidth="xl">
+					<h2 className="text-center">
+						Self Learning vs <span className="text-theme-yellow">DesignCamp</span>
+					</h2>
+					<p className='leading-6 text-center mt-4'>
+						Mentorship is key to success in graphic design - choose DesignCamp for
+						personalized guidance.
+					</p>
+					<div className='w-full relative'>
+						<div className='absolute flex w-full h-full z-[-1]'>
+							
+
+						</div>
+						<table className='relative'>
+
+						</table>
+					</div>
+				</Container>
 			</section>
 		</>
 	);
