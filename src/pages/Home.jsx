@@ -6,6 +6,7 @@ import Grid from '@mui/material/Unstable_Grid2/Grid2';
 import { ButtonDefault, ButtonCapsule } from '../components/Buttons';
 import { UnderlineDecor, BannerGrid, CardGrid } from '../components/Particles';
 import navLogo from '../assets/logo-designcamp.png';
+import navLogoWhite from '../assets/logo-designcamp2.png';
 import iconClose from '../assets/icon-close.svg';
 import iconCheck from '../assets/icon-check.svg';
 import imgBanner from '../assets/bg-banner.svg';
@@ -227,25 +228,75 @@ function Home() {
 					</div>
 				</Container>
 			</section>
-			<section id="comparison" className="bg-neutral-dark text-white">
-				<Container className="px-4 md:px-5 py-[90px]" maxWidth="xl">
-					<h2 className="text-center">
-						Self Learning vs <span className="text-theme-yellow">DesignCamp</span>
-					</h2>
-					<p className='leading-6 text-center mt-4'>
-						Mentorship is key to success in graphic design - choose DesignCamp for
-						personalized guidance.
-					</p>
-					<div className='w-full relative'>
-						<div className='absolute flex w-full h-full z-[-1]'>
-							
-
+			<section id="comparison" className="bg-neutral-dark text-white pt-[90px] pb-[70px]">
+				<h2 className="px-4 md:px-5 text-center">
+					Self Learning vs <span className="text-theme-yellow">DesignCamp</span>
+				</h2>
+				<p className="px-4 md:px-5 leading-6 text-center mt-4">
+					Mentorship is key to success in graphic design - choose DesignCamp for
+					personalized guidance.
+				</p>
+				<Container className="px-0 mt-7 overflow-x-hidden" maxWidth="xl">
+					<div id="comparison-table-rail" className="w-full overflow-x-auto relative">
+						<div
+							id="comparison-table-bg"
+							className="w-[768px] md:w-full h-full py-5 px-4 md:px-5 absolute top-0"
+						>
+							<div className="flex w-full h-full">
+								<div className="w-[23.8%]" />
+								<div className="w-[38.1%] pl-[25.5px]">
+									<div className="bg-[#23262a] rounded-[20px] w-full h-full" />
+								</div>
+								<div className="w-[38.1%] pl-[25.5px]">
+									<div className="bg-[#23262a] rounded-[20px] border-solid border-4 border-theme-yellow shadow-[0_0_20px_#FFA500] w-full h-full" />
+								</div>
+							</div>
 						</div>
-						<table className='relative'>
-
+						<table
+							id="comparison-table-text"
+							className="w-[768px] md:w-full my-5 px-4 md:px-5 relative"
+						>
+							<thead>
+								<tr>
+									<th className="w-[23.8%] px-0" />
+									<th className="w-[38.1%] pl-[25.5px] pr-0 pt-5 lg:pt-7 pb-9 lg:pb-12 text-center font-bold text-2xl leading-[1.2]">
+										<p className="px-5 lg:px-9">Self Learning</p>
+									</th>
+									<th className="flex justify-center pl-[25.5px] pr-0 pt-4 lg:pt-6">
+										<div className="w-[14.375rem] ml-3 md:ml-1">
+											<img src={navLogoWhite} alt="Design Camp" />
+										</div>
+									</th>
+								</tr>
+							</thead>
+							<tbody>
+								{comparisonRows.map((row, index) => {
+									return (
+										<tr
+											key={'category-' + index}
+											className="align-top leading-normal"
+										>
+											<td className="font-bold p-0">{row.category}</td>
+											<td className="p-0 pl-[25.5px]">
+												<p className="px-5 lg:px-9 mb-9">
+													{row.selflearnDesc}
+												</p>
+											</td>
+											<td className="p-0 pl-[25.5px]">
+												<p className="px-5 lg:px-9  mb-9">
+													{row.designcampDesc}
+												</p>
+											</td>
+										</tr>
+									);
+								})}
+							</tbody>
 						</table>
 					</div>
 				</Container>
+			</section>
+			<section id="experts">
+				<Container className="px-4 md:px-5 py-[90px]" maxWidth="xl"></Container>
 			</section>
 		</>
 	);
