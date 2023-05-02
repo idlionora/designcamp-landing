@@ -1,6 +1,7 @@
-import { ButtonDefault } from '../components/Buttons';
+import { useState } from 'react';
 import Grid from '@mui/material/Unstable_Grid2/Grid2';
 import Paper from '@mui/material/Paper';
+import ArrowIcon from '../assets/ArrowIcon';
 
 export const UnderlineDecor = ({ size = 'h1', text = 'insert text' }) => {
 	let decorHeight;
@@ -47,15 +48,20 @@ export const CardGrid = ({
 	title = 'Insert Title Here',
 	text = 'Insert long post text here. The text will be truncated in two lines, no matter how long.',
 }) => {
+	const [cursorHover, setCursorHover] = useState(false);
 	return (
 		<Grid xs={12} sm={6} md={4}>
 			<Paper
 				elevation={6}
-				className="rounded-[20px] px-5 py-5 lg:px-9 lg:py-7 text-left h-full"
+				className={`rounded-[20px] px-5 py-5 lg:px-9 lg:py-7 text-left h-full ${
+					cursorHover ? 'bg-neutral-dark text-white' : 'bg-white text-black'
+				}`}
+				onMouseEnter={() => setCursorHover(true)}
+				onMouseLeave={() => setCursorHover(false)}
 			>
 				<div className="w-full h-full flex flex-col items-start">
 					<div className="flex items-center">
-						<div className="flex w-8 h-8 self-start justify-center items-center rounded-[5px] bg-theme-yellow mr-[14px] shrink-0 font-bold text-xl leading-6">
+						<div className="flex w-8 h-8 self-start justify-center items-center rounded-[5px] bg-theme-yellow mr-[14px] shrink-0 font-bold text-xl leading-6 text-black">
 							{number}
 						</div>
 						<h3>{title}</h3>
@@ -63,7 +69,10 @@ export const CardGrid = ({
 					<div className="grow flex flex-col justify-center">
 						<p className="line-clamp-2 my-5 lg:my-7">{text}</p>
 					</div>
-					<ButtonDefault text="Lebih lanjut" />
+					<div className="flex items-center justify-center leading-none font-medium relative border-solid border-0 border-b border-white cursor-pointer">
+						<p className="mr-2.5">Read More</p>
+						<ArrowIcon width="11" />
+					</div>
 				</div>
 			</Paper>
 		</Grid>

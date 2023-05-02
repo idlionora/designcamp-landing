@@ -5,12 +5,14 @@ import Toolbar from '@mui/material/Toolbar';
 import Grid from '@mui/material/Unstable_Grid2/Grid2';
 import { ButtonDefault, ButtonCapsule } from '../components/Buttons';
 import { UnderlineDecor, BannerGrid, CardGrid } from '../components/Particles';
+import { HomeCarousel } from '../components/Carousel';
 import navLogo from '../assets/logo-designcamp.png';
 import navLogoWhite from '../assets/logo-designcamp2.png';
 import iconClose from '../assets/icon-close.svg';
 import iconCheck from '../assets/icon-check.svg';
 import imgBanner from '../assets/bg-banner.svg';
 import imgVidthumb from '../assets/vidthumbnail.png';
+
 
 function createRow(category, selflearnDesc, designcampDesc) {
 	return { category, selflearnDesc, designcampDesc };
@@ -48,7 +50,7 @@ const comparisonRows = [
 	),
 ];
 
-function Home() {
+const Home = () => {
 	const [loadVideo, setLoadVideo] = useState(false);
 	const facilities = [
 		'Lifetime video lessons',
@@ -85,9 +87,7 @@ function Home() {
 						<div className="flex flex-col md:flex-row items-end gap-1">
 							<ButtonDefault
 								width="w-[115px]"
-								size="lg"
 								text="Sign In"
-								arrow="false"
 							/>
 							<ButtonCapsule width="w-[115px]" text="Join now" />
 						</div>
@@ -112,9 +112,7 @@ function Home() {
 					</p>
 					<div className="mt-11 flex gap-5">
 						<ButtonDefault
-							size="lg"
 							text="Contact Us"
-							arrow={false}
 							width="w-[155px]"
 						/>
 						<ButtonCapsule text="Start Learning" arrow={true} />
@@ -237,7 +235,7 @@ function Home() {
 					personalized guidance.
 				</p>
 				<Container className="px-0 mt-7 overflow-x-hidden" maxWidth="xl">
-					<div id="comparison-table-rail" className="w-full overflow-x-auto relative">
+					<div id="comparison-table-frame" className="w-full overflow-x-auto relative">
 						<div
 							id="comparison-table-bg"
 							className="w-[768px] md:w-full h-full py-5 px-4 md:px-5 absolute top-0"
@@ -296,7 +294,18 @@ function Home() {
 				</Container>
 			</section>
 			<section id="experts">
-				<Container className="px-4 md:px-5 py-[90px]" maxWidth="xl"></Container>
+				<Container className="px-4 md:px-5 py-[90px]" maxWidth="xl">
+					<div className='text-center'>
+						<h2>
+							Learn from the
+							<UnderlineDecor text="Expert" size="h2" />
+						</h2>
+						<p className="text-[#878787] mt-4">
+							Discover what you'll learn in DesignCamp's graphic design course, from fundamentals to advanced techniques.
+						</p>
+					</div>
+					<HomeCarousel/>
+				</Container>
 			</section>
 		</>
 	);
