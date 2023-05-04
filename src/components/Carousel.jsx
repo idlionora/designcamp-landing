@@ -182,3 +182,5 @@ export const HomeCarousel = () => {
 		</div>
 	);
 };
+
+export default HomeCarousel

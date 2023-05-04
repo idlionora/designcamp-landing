@@ -5,13 +5,15 @@ import Toolbar from '@mui/material/Toolbar';
 import Grid from '@mui/material/Unstable_Grid2/Grid2';
 import { ButtonDefault, ButtonCapsule } from '../components/Buttons';
 import { UnderlineDecor, BannerGrid, CardGrid } from '../components/Particles';
-import { HomeCarousel } from '../components/Carousel';
+import HomeCarousel from '../components/Carousel';
+import HomeAccordion from '../components/Accordion';
 import navLogo from '../assets/logo-designcamp.png';
 import navLogoWhite from '../assets/logo-designcamp2.png';
 import iconClose from '../assets/icon-close.svg';
 import iconCheck from '../assets/icon-check.svg';
 import imgBanner from '../assets/bg-banner.svg';
 import imgVidthumb from '../assets/vidthumbnail.png';
+
 
 
 function createRow(category, selflearnDesc, designcampDesc) {
@@ -85,10 +87,7 @@ const Home = () => {
 							alt="DesignCamp Logo"
 						/>
 						<div className="flex flex-col md:flex-row items-end gap-1">
-							<ButtonDefault
-								width="w-[115px]"
-								text="Sign In"
-							/>
+							<ButtonDefault width="w-[115px]" text="Sign In" />
 							<ButtonCapsule width="w-[115px]" text="Join now" />
 						</div>
 					</Toolbar>
@@ -111,10 +110,7 @@ const Home = () => {
 						art of graphic design from the ground up.
 					</p>
 					<div className="mt-11 flex gap-5">
-						<ButtonDefault
-							text="Contact Us"
-							width="w-[155px]"
-						/>
+						<ButtonDefault text="Contact Us" width="w-[155px]" />
 						<ButtonCapsule text="Start Learning" arrow={true} />
 					</div>
 				</Container>
@@ -295,16 +291,60 @@ const Home = () => {
 			</section>
 			<section id="experts">
 				<Container className="px-4 md:px-5 py-[90px]" maxWidth="xl">
-					<div className='text-center'>
+					<div className="text-center">
 						<h2>
 							Learn from the
 							<UnderlineDecor text="Expert" size="h2" />
 						</h2>
 						<p className="text-[#878787] mt-4">
-							Discover what you'll learn in DesignCamp's graphic design course, from fundamentals to advanced techniques.
+							Discover what you'll learn in DesignCamp's graphic design course, from
+							fundamentals to advanced techniques.
 						</p>
 					</div>
-					<HomeCarousel/>
+					<HomeCarousel />
+				</Container>
+			</section>
+			<section id="faq">
+				<Container className="px-4 md:px-5 pb-[90px]" maxWidth="xl">
+					<div className="w-full flex flex-col lg:flex-row gap-5 justify-between">
+						<div className="w-full lg:max-w-[450px] text-center lg:text-left">
+							<h2>
+								<UnderlineDecor
+									size="h2"
+									text="Frequently"
+									className="min-[357px]:hidden"
+								/>
+								<UnderlineDecor
+									size="h2"
+									text="Asked"
+									className="min-[357px]:hidden"
+								/>
+								<UnderlineDecor
+									size="h2"
+									text="Frequently Asked"
+									className="hidden min-[357px]:inline-block"
+								/>
+								Questions
+							</h2>
+							<p className="mt-4 text-[#878787] leading-normal">
+								Get answers to your questions about DesignCamp's graphic
+								design&nbsp;course.
+							</p>
+							<div className="hidden lg:block lg:mt-[76px]">
+								<p className="font-semibold">Have other questions?</p>
+								<ButtonCapsule className="mt-3" text="Contact Us" />
+							</div>
+						</div>
+						<div className="w-full max-w-[980px] grow-0">
+							<HomeAccordion />
+							<div className="lg:hidden mt-7 flex flex-col justify-center items-center">
+								<p className="font-semibold">Have other questions?</p>
+								<div className="w-fit">
+									<ButtonCapsule className="mt-3" text="Contact Us" />
+								</div>
+							</div>
+						</div>
+					</div>
 				</Container>
 			</section>
 		</>

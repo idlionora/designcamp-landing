@@ -30,13 +30,14 @@ export const ButtonCapsule = ({
 	width = 'w-fit',
 	theme = 'dark',
 	arrow = false,
-	onClick = null
+	onClick = null,
+	className = ''
 }) => {
 	return (
 		<Button
 			className={`rounded-full normal-case ${
 				theme === 'light' ? 'bg-[#FFA500] hover:bg-amber-400' : 'bg-[#1C2024]'
-			} text-base p-0 border border-solid`}
+			} text-base p-0 border border-solid border-transparent ${className}`}
 			variant="contained"
 			color="yellowOpaque"
 			disableElevation

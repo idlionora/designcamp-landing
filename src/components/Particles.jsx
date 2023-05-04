@@ -3,7 +3,7 @@ import Grid from '@mui/material/Unstable_Grid2/Grid2';
 import Paper from '@mui/material/Paper';
 import ArrowIcon from '../assets/ArrowIcon';
 
-export const UnderlineDecor = ({ size = 'h1', text = 'insert text' }) => {
+export const UnderlineDecor = ({ size = 'h1', text = 'insert text', className = ''}) => {
 	let decorHeight;
 	if (size === 'h1') {
 		decorHeight = 'bottom-0.5 md:bottom-1.5';
@@ -14,7 +14,7 @@ export const UnderlineDecor = ({ size = 'h1', text = 'insert text' }) => {
 	return (
 		<>
 			{' '}
-			<div className="inline-block relative">
+			<div className={`inline-block relative ${className}`}>
 				<span
 					className={`h-[12px] ${
 						size === 'h1' ? 'w-[105%] left-[-2.5%]' : 'w-[103%] left-[-1.5%]'
