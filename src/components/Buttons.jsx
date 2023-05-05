@@ -31,7 +31,8 @@ export const ButtonCapsule = ({
 	theme = 'dark',
 	arrow = false,
 	onClick = null,
-	className = ''
+	className = '',
+	ariaLabel	
 }) => {
 	return (
 		<Button
@@ -42,6 +43,7 @@ export const ButtonCapsule = ({
 			color="yellowOpaque"
 			disableElevation
 			onClick={onClick}
+			aria-labelledby={ariaLabel}						
 		>
 			<span
 				className={`${

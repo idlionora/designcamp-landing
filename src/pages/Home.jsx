@@ -7,14 +7,17 @@ import { ButtonDefault, ButtonCapsule } from '../components/Buttons';
 import { UnderlineDecor, BannerGrid, CardGrid } from '../components/Particles';
 import HomeCarousel from '../components/Carousel';
 import HomeAccordion from '../components/Accordion';
-import navLogo from '../assets/logo-designcamp.png';
-import navLogoWhite from '../assets/logo-designcamp2.png';
+import logoMain from '../assets/logo-designcamp.png';
+import logoWhite from '../assets/logo-designcamp2.png';
+import logoVector from '../assets/logo-designcamp3.svg';
 import iconClose from '../assets/icon-close.svg';
 import iconCheck from '../assets/icon-check.svg';
 import imgBanner from '../assets/bg-banner.svg';
 import imgVidthumb from '../assets/vidthumbnail.png';
-
-
+import iconInstagram from '../assets/icon-instagram.svg';
+import iconTwitter from '../assets/icon-twitter.svg';
+import iconYoutube from '../assets/icon-youtube.svg';
+import iconLinkedin from '../assets/icon-linkedin.svg';
 
 function createRow(category, selflearnDesc, designcampDesc) {
 	return { category, selflearnDesc, designcampDesc };
@@ -52,16 +55,40 @@ const comparisonRows = [
 	),
 ];
 
+const facilities = [
+	'Lifetime video lessons',
+	'Live Q&A sessions',
+	'Hands-on projects',
+	'Group critiques',
+	'e-Certificate',
+	'Portfolio reviews',
+];
+
+const saveMoreList = [
+	'30+ modules',
+	'6+ hands-on projects',
+	'Lifetime access',
+	'Weekly mentorship',
+];
+
+const saveMoreDivs = [
+	{ title: 'Graphic Design Bootcamp', desc: '$2.000++' },
+	{ title: 'Offline Training', desc: '$300++/ module * 20 modules = $6,000++' },
+	{ title: 'Offline Training', desc: '$50++/ module * 20 modules = $1,000++' },
+	{ title: 'Buy Modules One by One', desc: '$20/ module * 20 modules = $400' },
+	{ title: 'Hire a Mentor', desc: '$50 - $100/ session' },
+];
+
+const socialButtons = [
+	{ icon: iconInstagram, ariaLabel: 'Instagram', link: 'https://www.instagram.com/' },
+	{ icon: iconTwitter, ariaLabel: 'Twitter', link: 'https://twitter.com/' },
+	{ icon: iconYoutube, ariaLabel: 'Youtube', link: 'https://www.youtube.com/' },
+	{ icon: iconLinkedin, ariaLabel: 'LinkedIn', link: 'https://www.linkedin.com/' },
+];
+
 const Home = () => {
 	const [loadVideo, setLoadVideo] = useState(false);
-	const facilities = [
-		'Lifetime video lessons',
-		'Live Q&A sessions',
-		'Hands-on projects',
-		'Group critiques',
-		'e-Certificate',
-		'Portfolio reviews',
-	];
+	
 
 	return (
 		<>
@@ -83,7 +110,7 @@ const Home = () => {
 					<Toolbar className="md:h-[100px] justify-between py-2" disableGutters>
 						<img
 							className="w-[215px] md:w-[230px]"
-							src={navLogo}
+							src={logoMain}
 							alt="DesignCamp Logo"
 						/>
 						<div className="flex flex-col md:flex-row items-end gap-1">
@@ -258,7 +285,7 @@ const Home = () => {
 									</th>
 									<th className="flex justify-center pl-[25.5px] pr-0 pt-4 lg:pt-6">
 										<div className="w-[14.375rem] ml-3 md:ml-1">
-											<img src={navLogoWhite} alt="Design Camp" />
+											<img src={logoWhite} alt="Design Camp" />
 										</div>
 									</th>
 								</tr>
@@ -347,8 +374,110 @@ const Home = () => {
 					</div>
 				</Container>
 			</section>
+			<section id="save-more">
+				<Container className="px-4 md:px-5 pb-[90px] text-center">
+					<h2>
+						<UnderlineDecor size="h2" text="Save More" />
+						with DesignCamp
+					</h2>
+					<p className="text-[#878787] mt-4">Get benefits worth thousands of dollars!</p>
+					<div className="w-full mt-[60px] flex flex-col md:flex-row gap-[60px] items-center justify-center relative">
+						<div className="w-full max-w-[536px] bg-neutral-dark rounded-[20px] py-20 px-8 min-[300px]:px-12 sm:px-16 text-left h-[35rem] sm:h-[33.2rem] md:h-[35.625rem]">
+							<img
+								src={logoVector}
+								alt="DesignCamp"
+								className="w-full max-w-[332px]"
+							/>
+							<p className="mt-6">
+								<span className="line-through align-top text-[#D62525] text-xl sm:text-2xl">
+									$500
+								</span>
+								<span className="text-4xl sm:text-[2.5rem] text-white font-extrabold align-top ml-[10px]">
+									$60
+								</span>
+							</p>
+							<ul className="list-none mt-7 pl-0 text-lg sm:text-xl text-white sm:font-bold">
+								{saveMoreList.map((saveMore, index) => {
+									return (
+										<li
+											key={'savemore-a' + index}
+											className="flex gap-3 items-center mb-4"
+										>
+											<img
+												className="inline-block w-6"
+												src={iconCheck}
+												alt=""
+											/>
+											<p>{saveMore}</p>
+										</li>
+									);
+								})}
+							</ul>
+						</div>
+						<div className="w-full max-w-[536px] bg-neutral-dark rounded-[20px] py-14 sm:py-20 px-8 min-[300px]:px-12 sm:px-16 text-left text-white h-[37rem] min-[300px]:h-[35rem] sm:h-[33.2rem] md:h-[35.625rem] flex flex-col justify-center lg:justify-start gap-7">
+							{saveMoreDivs.map(({ title, desc }, index) => {
+								return (
+									<div key={'savemore-b' + index}>
+										<p className="font-bold text-xl leading-6">{title}</p>
+										<p className="block mt-2">{desc}</p>
+									</div>
+								);
+							})}
+						</div>
+						<div className="rounded-full bg-theme-yellow flex w-[130px] h-[130px] items-center justify-center font-bold text-4xl sm:text-5xl absolute top-1/2 translate-y-[-65%] min-[300px]:translate-y-[-50%]">
+							<p>VS</p>
+						</div>
+					</div>
+					<div className="mt-[60px] py-[68px] px-4 bg-theme-yellow/[.15] rounded-[30px] border-solid border-4 border-theme-yellow text-center">
+						<h2>Limited-time Promotion</h2>
+						<p className="text-xl leading-6 mt-2">
+							Join today for an exclusice price&nbsp;offer!
+						</p>
+						<p className="font-extrabold text-[4rem] mt-9">$50</p>
+						<ButtonCapsule
+							theme="light"
+							arrow={true}
+							text="Join Now"
+							className="mt-3"
+						/>
+						<p className="mt-9">
+							Note: Prices will increase as more learning materials are added. Join
+							now to save more!
+						</p>
+					</div>
+				</Container>
+			</section>
+			<footer className="bg-neutral-dark text-white">
+				<Container className="px-4 md:px-5 text-left">
+					<Grid container className="py-[72px]">
+						<Grid xs={12} md={6}>
+							<img src={logoWhite} alt="DesignCamp" className="w-[230px]" />
+							<p className="leading-normal mt-3 block w-full max-w-[440px]">
+								Your comprehensive graphic design education with mentorship and
+								hands-on practice.
+							</p>
+							<div className="mt-9 flex gap-3">
+								{socialButtons.map(({ icon, ariaLabel, link }, index) => {
+									return (
+										<a
+											key={`socialbutton` + index}
+											href={link}
+											target="_blank"
+											className="w-14 h-14 rounded-full flex items-center justify-center border-none bg-[#23262a]"
+											aria-labelledby={ariaLabel}
+										>
+											<img src={icon} alt="" className="w-[25px]" />
+										</a>
+									);
+								})}
+							</div>
+						</Grid>
+						<Grid xs={12} md={6}></Grid>
+					</Grid>
+				</Container>
+			</footer>
 		</>
 	);
-}
+};
 
 export default Home;

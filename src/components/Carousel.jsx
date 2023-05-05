@@ -171,12 +171,12 @@ export const HomeCarousel = () => {
 				{slidePosition.isFirst ? (
 					<ButtonDisabled arrow="reverse" text="" />
 				) : (
-					<ButtonCapsule arrow="reverse" theme="light" text="" onClick={clickPrev} />
+					<ButtonCapsule arrow="reverse" theme="light" text="" onClick={clickPrev} ariaLabel='previous slide'/>
 				)}
 				{slidePosition.isLast ? (
 					<ButtonDisabled arrow={true} text="" />
 				) : (
-					<ButtonCapsule arrow={true} theme="light" text="" onClick={clickNext} />
+					<ButtonCapsule arrow={true} theme="light" text="" onClick={clickNext} ariaLabel='next slide'/>
 				)}
 			</div>
 		</div>
