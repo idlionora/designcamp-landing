@@ -88,23 +88,20 @@ const socialButtons = [
 
 const Home = () => {
 	const [loadVideo, setLoadVideo] = useState(false);
-	
 
 	return (
 		<>
 			<AppBar className="bg-white text-black" position="static">
-				<div id="promo-bar" className="w-full flex justify-center bg-theme-yellow">
-					<Container
-						className="px-4 py-3.5 relative text-center flex justify-center items-center"
-						maxWidth="xl"
-					>
-						<p>Sign up now and get discounts up to 90%&nbsp;off!</p>
-						<img
-							className="ml-4 w-3 h-3 sm:absolute right-4"
-							src={iconClose}
-							alt="Close Promotion"
-						/>
-					</Container>
+				<div
+					id="promo-bar"
+					className="w-full flex justify-center items-center px-4 py-3.5 text-center bg-theme-yellow"
+				>
+					<p>Sign up now and get discounts up to 90%&nbsp;off!</p>
+					<img
+						className="ml-4 w-3 h-3 sm:absolute right-4"
+						src={iconClose}
+						alt="Close Promotion"
+					/>
 				</div>
 				<Container className="px-4" maxWidth="xl">
 					<Toolbar className="md:h-[100px] justify-between py-2" disableGutters>
@@ -375,7 +372,7 @@ const Home = () => {
 				</Container>
 			</section>
 			<section id="save-more">
-				<Container className="px-4 md:px-5 pb-[90px] text-center">
+				<Container className="px-4 md:px-5 pb-[90px] text-center" maxWidth="xl">
 					<h2>
 						<UnderlineDecor size="h2" text="Save More" />
 						with DesignCamp
@@ -448,7 +445,7 @@ const Home = () => {
 				</Container>
 			</section>
 			<footer className="bg-neutral-dark text-white">
-				<Container className="px-4 md:px-5 text-left">
+				<Container className="px-4 md:px-5 text-left" maxWidth="xl">
 					<Grid container className="py-[72px]">
 						<Grid xs={12} md={6}>
 							<img src={logoWhite} alt="DesignCamp" className="w-[230px]" />
@@ -472,8 +469,57 @@ const Home = () => {
 								})}
 							</div>
 						</Grid>
-						<Grid xs={12} md={6}></Grid>
+						<Grid xs={12} md={6} className="flex min-[900px]:justify-end">
+							<div className="flex gap-4 leading-normal mt-10 min-[900px]:mt-0 w-full max-w-[36.94rem] justify-start min-[900px]:justify-end">
+								<div className="w-full max-w-[170.33px]">
+									<h3 className="leading-normal">Product</h3>
+									<a href="#" className="block mt-5 no-underline text-white">
+										Overview
+									</a>
+									<a href="#" className="block mt-5 no-underline text-white">
+										Pricing
+									</a>
+									<a href="#" className="block mt-5 no-underline text-white">
+										Roadmap
+									</a>
+								</div>
+								<div className="w-full max-w-[170.33px]">
+									<h3 className="leading-normal">Company</h3>
+									<a href="#" className="block mt-5 no-underline text-white">
+										About
+									</a>
+									<a href="#" className="block mt-5 no-underline text-white">
+										Contact
+									</a>
+									<a href="#" className="block mt-5 no-underline text-white">
+										Career
+									</a>
+									<a href="#" className="block mt-5 no-underline text-white">
+										Reviews
+									</a>
+								</div>
+								<div className="w-full max-w-[170.33px]">
+									<h3 className="leading-normal">Legal</h3>
+									<a href="#" className="block mt-5 no-underline text-white">
+										Terms & Conditions
+									</a>
+									<a href="#" className="block mt-5 no-underline text-white">
+										Cookie Policy
+									</a>
+									<a href="#" className="block mt-5 no-underline text-white">
+										Privacy Policy
+									</a>
+								</div>
+							</div>
+						</Grid>
 					</Grid>
+				</Container>
+				<Container
+					className="py-7 flex flex-col md:flex-row justify-between border-solid border-0 border-t-2 border-[#23262A]"
+					maxWidth="xl"
+				>
+					<p>© 2023 CodePolitan. All rights reserved.</p>
+					<p className="mt-3 md:mt-0">Designed by KelasFullstack.id</p>
 				</Container>
 			</footer>
 		</>
