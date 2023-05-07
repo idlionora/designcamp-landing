@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Container from '@mui/material/Container';
 import Toolbar from '@mui/material/Toolbar';
@@ -14,6 +14,7 @@ import iconClose from '../assets/icon-close.svg';
 import iconCheck from '../assets/icon-check.svg';
 import imgBanner from '../assets/bg-banner.svg';
 import imgVidthumb from '../assets/vidthumbnail.png';
+import imgVidthumb2 from '../assets/vidthumbnail2.png'
 import iconInstagram from '../assets/icon-instagram.svg';
 import iconTwitter from '../assets/icon-twitter.svg';
 import iconYoutube from '../assets/icon-youtube.svg';
@@ -87,22 +88,86 @@ const socialButtons = [
 ];
 
 const Home = () => {
-	const [loadVideo, setLoadVideo] = useState(false);
+	const videoRef = useRef(null);
+	const [promoBarIsOpen, setPromoBarIsOpen] = useState(true);
+	const [screenDisplay, setScreenDisplay] = useState(false);
+	const [screenOpacity, setScreenOpacity] = useState(false);
+	const [videoDisplay, setVideoDisplay] = useState(false);
+	const [videoInPosition, setVideoInPosition] = useState(false);
+
+	function toggleVideoModal() {
+		if (!videoDisplay) {
+			setScreenDisplay(true);
+			setVideoDisplay(true);
+			setTimeout(() => {
+				setScreenOpacity(true);
+				setVideoInPosition(true);
+			}, 10);
+		} else {
+			setScreenOpacity(false);
+			setVideoInPosition(false);
+			setTimeout(() => {
+				setScreenDisplay(false);
+			}, 210);
+			setTimeout(() => {
+				setVideoDisplay(false);
+			}, 360);
+		}
+	}
 
 	return (
 		<>
-			<AppBar className="bg-white text-black" position="static">
+			<div
+				className={`bg-theme-grey w-full h-full fixed z-50 transition-opacity duration-200 ${
+					screenDisplay ? 'block' : 'hidden'
+				} ${screenOpacity ? 'opacity-30' : 'opacity-0'}`}
+				onClick={toggleVideoModal}
+			/>
+			<div
+				className={`fixed z-[51] w-full h-full sm:px-4 md:px-5 flex justify-center items-center ${
+					videoDisplay ? 'block' : 'hidden'
+				} ${
+					videoInPosition ? 'translate-y-0 opacity-100' : 'translate-y-[100vh] opacity-0'
+				}`}
+				style={{ transition: 'opacity 320ms ease-in-out, transform 350ms ease-out' }}
+				onClick={toggleVideoModal}
+			>
 				<div
-					id="promo-bar"
-					className="w-full flex justify-center items-center px-4 py-3.5 text-center bg-theme-yellow"
+					className="relative w-full max-w-[61.25rem]"
+					onClick={(e) => e.stopPropagation()}
 				>
-					<p>Sign up now and get discounts up to 90%&nbsp;off!</p>
-					<img
-						className="ml-4 w-3 h-3 sm:absolute right-4"
-						src={iconClose}
-						alt="Close Promotion"
-					/>
+					<div className='w-full pt-[56.224%] relative'>
+
+					</div>
+					<img src={imgVidthumb2} alt="" className='w-full h-full rounded-2xl absolute z-[1] top-0'/>
+					{ videoDisplay &&
+						<iframe
+							ref={videoRef}
+							id="ytplayer"
+							className="rounded-2xl absolute z-[2] top-0 border-none"
+							type="text/html"
+							width="100%"
+							height="100%"
+							src="https://www.youtube.com/embed/FgZBeR1q-44"
+						></iframe>
+					}
 				</div>
+			</div>
+			<AppBar className="bg-white text-black" position="static">
+				{promoBarIsOpen && (
+					<div
+						id="promo-bar"
+						className="w-full flex justify-center items-center px-4 py-3.5 text-center bg-theme-yellow"
+					>
+						<p>Sign up now and get discounts up to 90%&nbsp;off!</p>
+						<img
+							className="ml-4 w-3 h-3 sm:absolute right-4 cursor-pointer"
+							src={iconClose}
+							alt="Close Promotion"
+							onClick={() => setPromoBarIsOpen(false)}
+						/>
+					</div>
+				)}
 				<Container className="px-4" maxWidth="xl">
 					<Toolbar className="md:h-[100px] justify-between py-2" disableGutters>
 						<img
@@ -185,21 +250,11 @@ const Home = () => {
 						</div>
 						<div className="w-full max-w-[640px] overflow-hidden rounded-2xl cursor-pointer basis-2/3">
 							<img
-								className={`w-full ${loadVideo ? 'hidden' : ''} rounded-2xl`}
+								className="w-full rounded-2xl"
 								src={imgVidthumb}
 								alt="Play Intro Video"
-								onClick={() => setLoadVideo(true)}
+								onClick={toggleVideoModal}
 							/>
-							{loadVideo ? (
-								<iframe
-									id="ytplayer"
-									type="text/html"
-									width="100%"
-									height="360"
-									src="https://www.youtube.com/embed/FgZBeR1q-44?autoplay=1&mute=1"
-									frameborder="0"
-								></iframe>
-							) : null}
 						</div>
 					</div>
 					<div className="text-center pt-16">
