@@ -47,6 +47,7 @@ export const CardGrid = ({
 	number = '1',
 	title = 'Insert Title Here',
 	text = 'Insert long post text here. The text will be truncated in two lines, no matter how long.',
+	onClick = null
 }) => {
 	const [cursorHover, setCursorHover] = useState(false);
 	return (
@@ -69,7 +70,7 @@ export const CardGrid = ({
 					<div className="grow flex flex-col justify-center">
 						<p className="line-clamp-2 my-5 lg:my-7">{text}</p>
 					</div>
-					<div className="flex items-center justify-center leading-none font-medium relative border-solid border-0 border-b border-white cursor-pointer">
+					<div className="flex items-center justify-center leading-none font-medium relative border-solid border-0 border-b border-white cursor-pointer" onClick={onClick}>
 						<p className="mr-2.5">Read More</p>
 						<ArrowIcon width="11" />
 					</div>

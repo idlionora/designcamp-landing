@@ -18,7 +18,7 @@ export const ButtonDefault = ({ text = 'Button', width = 'w-fit', size = 'lg', a
 						: ''
 				}`}
 			>
-				<p className={arrow == true ? 'mr-2.5' : ''}>{text}</p>
+				<p className={`${arrow == true ? 'mr-2.5' : ''} leading-[1.2]`}>{text}</p>
 				{arrow == true ? <ArrowIcon width="11" /> : null}
 			</span>
 		</Button>
@@ -58,7 +58,7 @@ export const ButtonCapsule = ({
 							: arrow === 'reverse'
 							? 'ml-2'
 							: arrow == true && 'mr-2'
-					}`}
+					} leading-[1.2]`}
 				>
 					{text}
 				</p>
@@ -77,7 +77,7 @@ export const ButtonDisabled = ({ text = 'Button', width = 'w-fit', arrow = false
 			<p
 				className={`${
 					text.length == 0 ? '' : arrow === 'reverse' ? 'ml-2' : arrow == true && 'mr-2'
-				}`}
+				} leading-[1.2]`}
 			>
 				{text}
 			</p>

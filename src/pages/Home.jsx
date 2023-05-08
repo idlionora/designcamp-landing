@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Container from '@mui/material/Container';
 import Toolbar from '@mui/material/Toolbar';
@@ -14,12 +14,44 @@ import iconClose from '../assets/icon-close.svg';
 import iconCheck from '../assets/icon-check.svg';
 import imgBanner from '../assets/bg-banner.svg';
 import imgVidthumb from '../assets/vidthumbnail.png';
-import imgVidthumb2 from '../assets/vidthumbnail2.png'
+import imgVidthumb2 from '../assets/vidthumbnail2.png';
 import iconInstagram from '../assets/icon-instagram.svg';
 import iconTwitter from '../assets/icon-twitter.svg';
 import iconYoutube from '../assets/icon-youtube.svg';
 import iconLinkedin from '../assets/icon-linkedin.svg';
 
+const thingsToLearn = [
+	{
+		number: '1',
+		title: 'Fundamental of Graphic Design',
+		text: 'Provides a comprehensive introduction to the principles and techniques of graphic design. Students will learn about color theory, typography, composition, and layout, as well as the history and theory of graphic design.',
+	},
+	{
+		number: '2',
+		title: 'Design Thinking',
+		text: 'How to identify design problems, brainstorm solutions, and iterate on design ideas to create suitable design for client. designers communicate mostly in sketches and models to translate abstract requirements into concrete objects.',
+	},
+	{
+		number: '3',
+		title: 'Mastering Adobe Photoshop',
+		text: 'Learn how to use tools and techniques for photo manipulation, compositing, and digital editing in Adobe Photoshop. This photoshop course is made to help you learn to edit or create appealing images.',
+	},
+	{
+		number: '4',
+		title: 'Vector with Adobe Illustrator',
+		text: 'Learn how to work with shapes, paths, and text to create logos, icons, and illustrations. Vector images create clean, scaleable design that allow for exciting visual possibilities with the added bonus of functionality.',
+	},
+	{
+		number: '5',
+		title: 'Layouting with Adobe InDesign',
+		text: 'How to work with text and images, create styles, and prepare files for print or digital display. You will learn how to set out documents, work with colour and incorporate text and images into documents.',
+	},
+	{
+		number: '6',
+		title: 'Building a Strong Brand Identity',
+		text: 'Learn about logo design, color theory, and typography, as well as how to develop a brand. A brand identity can inspire customers and increase a sense of loyalty for your brand.',
+	},
+];
 function createRow(category, selflearnDesc, designcampDesc) {
 	return { category, selflearnDesc, designcampDesc };
 }
@@ -30,7 +62,7 @@ const comparisonRows = [
 		'Offers a structured learning path that covers the fundamental principles and techniques of graphic design.'
 	),
 	createRow(
-		'Learning Resources',
+		'Learning Resources',      
 		'You must rely on free or low-cost resources available online, which may be incomplete or inconsistent in quality.',
 		'Offers you high-quality video tutorials, interactive exercises, and real-world projects.'
 	),
@@ -88,12 +120,14 @@ const socialButtons = [
 ];
 
 const Home = () => {
-	const videoRef = useRef(null);
 	const [promoBarIsOpen, setPromoBarIsOpen] = useState(true);
 	const [screenDisplay, setScreenDisplay] = useState(false);
 	const [screenOpacity, setScreenOpacity] = useState(false);
 	const [videoDisplay, setVideoDisplay] = useState(false);
 	const [videoInPosition, setVideoInPosition] = useState(false);
+	const [infoContent, setInfoContent] = useState({title: '', text: ''});
+	const [infoDisplay, setInfoDisplay] = useState(false);
+	const [infoInPosition, setInfoInPosition] = useState(false);
 
 	function toggleVideoModal() {
 		if (!videoDisplay) {
@@ -115,34 +149,54 @@ const Home = () => {
 		}
 	}
 
+	function toggleInfoModal(title, text) {
+		if (!infoDisplay) {
+			setInfoContent({title: title, text: text})
+			setScreenDisplay(true);
+			setInfoDisplay(true);
+			setTimeout(() => {
+				setScreenOpacity(true);
+				setInfoInPosition(true);
+			})
+		} else {
+			setScreenOpacity(false);
+			setInfoInPosition(false);
+			setTimeout(() => {
+				setScreenDisplay(false);
+			}, 210);
+			setTimeout(() => {
+				setInfoDisplay(false);
+				setInfoContent({title:'', text:''})
+			}, 360)
+		} 
+	}
+
 	return (
 		<>
 			<div
 				className={`bg-theme-grey w-full h-full fixed z-50 transition-opacity duration-200 ${
 					screenDisplay ? 'block' : 'hidden'
-				} ${screenOpacity ? 'opacity-30' : 'opacity-0'}`}
-				onClick={toggleVideoModal}
+				} ${screenOpacity ? 'opacity-70' : 'opacity-0'}`}
 			/>
 			<div
 				className={`fixed z-[51] w-full h-full sm:px-4 md:px-5 flex justify-center items-center ${
 					videoDisplay ? 'block' : 'hidden'
-				} ${
-					videoInPosition ? 'translate-y-0 opacity-100' : 'translate-y-[100vh] opacity-0'
-				}`}
-				style={{ transition: 'opacity 320ms ease-in-out, transform 350ms ease-out' }}
+				} ${videoInPosition ? 'translate-y-0' : 'translate-y-[100vh]'}`}
+				style={{ transition: 'transform 350ms ease-out' }}
 				onClick={toggleVideoModal}
 			>
-				<div
-					className="relative w-full max-w-[61.25rem]"
-					onClick={(e) => e.stopPropagation()}
-				>
-					<div className='w-full pt-[56.224%] relative'>
-
-					</div>
-					<img src={imgVidthumb2} alt="" className='w-full h-full rounded-2xl absolute z-[1] top-0'/>
-					{ videoDisplay &&
+				<div className="relative w-full max-w-[61.25rem]">
+					<div
+						className="w-full pt-[56.224%] relative"
+						onClick={(e) => e.stopPropagation()}
+					></div>
+					<img
+						src={imgVidthumb2}
+						alt=""
+						className="w-full h-full rounded-2xl absolute z-[1] top-0"
+					/>
+					{videoDisplay && (
 						<iframe
-							ref={videoRef}
 							id="ytplayer"
 							className="rounded-2xl absolute z-[2] top-0 border-none"
 							type="text/html"
@@ -150,7 +204,30 @@ const Home = () => {
 							height="100%"
 							src="https://www.youtube.com/embed/FgZBeR1q-44"
 						></iframe>
-					}
+					)}
+				</div>
+			</div>
+			<div
+				className={`fixed z-[51] w-full h-full px-4 md:px-5 flex justify-center items-center ${
+					infoDisplay ? 'block' : 'hidden'
+				} ${infoInPosition ? 'translate-y-0' : 'translate-y-[100vh]'}`}
+				style={{ transition: 'transform 350ms ease-out' }}
+				onClick={toggleInfoModal}
+			>
+				<div
+					className="relative w-full max-w-[38.95rem] bg-white rounded-[20px] py-9 px-12"
+					onClick={(e) => e.stopPropagation()}
+				>
+					<div className="flex justify-between items-center">
+						<h3>{infoContent.title}</h3>
+						<img
+							className="w-3 h-3 cursor-pointer"
+							src={iconClose}
+							alt="Close Info"
+							onClick={toggleInfoModal}
+						/>
+					</div>
+					<p className="mt-8">{infoContent.text}</p>
 				</div>
 			</div>
 			<AppBar className="bg-white text-black" position="static">
@@ -267,36 +344,16 @@ const Home = () => {
 							fundamentals to advanced techniques.
 						</p>
 						<Grid container className="mt-12" rowSpacing={2} columnSpacing={3}>
-							<CardGrid
-								number="1"
-								title="Fundamental of Graphic Design"
-								text="Provides a comprehensive introduction to the principles and techniques of graphic design. Students will learn about color theory, typography, composition, and layout, as well as the history and theory of graphic design."
-							/>
-							<CardGrid
-								number="2"
-								title="Design Thinking"
-								text="How to identify design problems, brainstorm solutions, and iterate on design ideas to create suitable design for client. designers communicate mostly in sketches and models to translate abstract requirements into concrete objects."
-							/>
-							<CardGrid
-								number="3"
-								title="Mastering Adobe Photoshop"
-								text="Learn how to use tools and techniques for photo manipulation, compositing, and digital editing in Adobe Photoshop. This photoshop course is made to help you learn to edit or create appealing images."
-							/>
-							<CardGrid
-								number="4"
-								title="Vector with Adobe Illustrator"
-								text="Learn how to work with shapes, paths, and text to create logos, icons, and illustrations. Vector images create clean, scaleable design that allow for exciting visual possibilities with the added bonus of functionality."
-							/>
-							<CardGrid
-								number="5"
-								title="Layouting with Adobe InDesign"
-								text="How to work with text and images, create styles, and prepare files for print or digital display. You will learn how to set out documents, work with colour and incorporate text and images into documents."
-							/>
-							<CardGrid
-								number="6"
-								title="Building a Strong Brand Identity"
-								text="Learn about logo design, color theory, and typography, as well as how to develop a brand. A brand identity can inspire customers and increase a sense of loyalty for your brand."
-							/>
+							{thingsToLearn.map(({ number, title, text }) => {
+								return (
+									<CardGrid
+										number={number}
+										title={title}
+										text={text}
+										onClick={() => toggleInfoModal(title, text)}
+									/>
+								);
+							})}
 						</Grid>
 					</div>
 				</Container>
@@ -405,7 +462,7 @@ const Home = () => {
 								/>
 								Questions
 							</h2>
-							<p className="mt-4 text-[#878787] leading-normal">
+							<p className="mt-4 text-[#878787]">
 								Get answers to your questions about DesignCamp's graphic
 								design&nbsp;course.
 							</p>
@@ -504,7 +561,7 @@ const Home = () => {
 					<Grid container className="py-[72px]">
 						<Grid xs={12} md={6}>
 							<img src={logoWhite} alt="DesignCamp" className="w-[230px]" />
-							<p className="leading-normal mt-3 block w-full max-w-[440px]">
+							<p className="mt-3 block w-full max-w-[440px]">
 								Your comprehensive graphic design education with mentorship and
 								hands-on practice.
 							</p>
