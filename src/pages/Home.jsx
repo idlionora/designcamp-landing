@@ -347,6 +347,7 @@ const Home = () => {
 							{thingsToLearn.map(({ number, title, text }) => {
 								return (
 									<CardGrid
+										key={'infocard' + number}
 										number={number}
 										title={title}
 										text={text}
@@ -558,7 +559,7 @@ const Home = () => {
 			</section>
 			<footer className="bg-neutral-dark text-white">
 				<Container className="px-4 md:px-5 text-left" maxWidth="xl">
-					<Grid container className="py-[72px]">
+					<Grid container className="py-[70px]">
 						<Grid xs={12} md={6}>
 							<img src={logoWhite} alt="DesignCamp" className="w-[230px]" />
 							<p className="mt-3 block w-full max-w-[440px]">
@@ -582,8 +583,8 @@ const Home = () => {
 							</div>
 						</Grid>
 						<Grid xs={12} md={6} className="flex min-[900px]:justify-end">
-							<div className="flex gap-4 leading-normal mt-10 min-[900px]:mt-0 w-full max-w-[36.94rem] justify-start min-[900px]:justify-end">
-								<div className="w-full max-w-[170.33px]">
+							<div className="flex gap-x-4 gap-y-10 leading-normal mt-10 min-[900px]:mt-0 w-full max-w-[36.94rem] justify-start min-[900px]:justify-end flex-wrap min-[375px]:flex-nowrap">
+								<div className="w-full max-w-[155px] min-[390px]:max-w-[170.33px] ">
 									<h3 className="leading-normal">Product</h3>
 									<a href="#" className="block mt-5 no-underline text-white">
 										Overview
@@ -595,7 +596,7 @@ const Home = () => {
 										Roadmap
 									</a>
 								</div>
-								<div className="w-full max-w-[170.33px]">
+								<div className="w-full max-w-[155px] min-[390px]:max-w-[170.33px]">
 									<h3 className="leading-normal">Company</h3>
 									<a href="#" className="block mt-5 no-underline text-white">
 										About
@@ -630,7 +631,7 @@ const Home = () => {
 					className="py-7 flex flex-col md:flex-row justify-between border-solid border-0 border-t-2 border-[#23262A]"
 					maxWidth="xl"
 				>
-					<p>© 2023 CodePolitan. All rights reserved.</p>
+					<p>© 2023 CodePolitan. All&nbsp;rights&nbsp;reserved.</p>
 					<p className="mt-3 md:mt-0">Designed by KelasFullstack.id</p>
 				</Container>
 			</footer>

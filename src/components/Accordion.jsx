@@ -126,7 +126,7 @@ return (
 			aria-controls={`panel${id}-content`}
 			id={`panel${id}-header`}
 		>
-			<p className="font-semibold">{question}</p>
+			<p className="font-semibold mr-3">{question}</p>
 		</AccordionSummary>
 		<AccordionDetails>
 			<p className="leading-normal">{answer}</p>
@@ -138,7 +138,7 @@ return (
 const HomeAccordion = () => {
     return (
         <div id='faq-accordion-container' className="w-full h-[60vh] lg:h-[833px] overflow-hidden relative my-0 mx-auto">
-            <div id='faq-accordion-frame' className="hide-scrollbar overflow-auto h-full">
+            <div id='faq-accordion-frame' className="hide-scrollbar overflow-y-scroll h-full">
                 {homeAccordionDatas.map(({id, question, answer})=> {return (<HomeAccordionContent key={`faq-accordion-${id}`}id={id} question={question} answer={answer}/>)})}                
             </div>
         </div>
