@@ -37,7 +37,7 @@ export const BannerGrid = ({ title, subtitle, line = true }) => {
 					}`}
 				/>
 			) : null}
-			<p className="font-heading font-semibold text-5xl">{title}</p>
+			<p className="font-heading font-semibold text-4xl lg:text-5xl">{title}</p>
 			<p>{subtitle}</p>
 		</Grid>
 	);
@@ -53,8 +53,8 @@ export const CardGrid = ({
 	return (
 		<Grid xs={12} sm={6} md={4}>
 			<Paper
-				elevation={6}
-				className={`rounded-[20px] px-5 py-5 lg:px-9 lg:py-7 text-left h-full ${
+				elevation={0}
+				className={`rounded-[20px] shadow-[0_8px_27px_rgba(22,35,51,0.1)] px-5 py-5 lg:px-9 lg:py-7 text-left h-full ${
 					cursorHover ? 'bg-neutral-dark text-white' : 'bg-white text-black'
 				}`}
 				onMouseEnter={() => setCursorHover(true)}
@@ -68,10 +68,19 @@ export const CardGrid = ({
 						<h3>{title}</h3>
 					</div>
 					<div className="grow flex flex-col justify-center">
-						<p className="line-clamp-2 my-5 lg:my-7">{text}</p>
+						<p
+							className={`line-clamp-2 my-5 lg:my-7 ${
+								cursorHover ? 'font-light' : 'text-[#878787]'
+							}`}
+						>
+							{text}
+						</p>
 					</div>
-					<div className="flex items-center justify-center leading-none font-medium relative border-solid border-0 border-b border-white cursor-pointer" onClick={onClick}>
-						<p className="mr-2.5">Read More</p>
+					<div
+						className="flex items-center justify-center leading-none font-medium relative border-solid border-0 border-b border-white cursor-pointer"
+						onClick={onClick}
+					>
+						<p className="mr-2.5 font-medium">Read More</p>
 						<ArrowIcon width="11" />
 					</div>
 				</div>

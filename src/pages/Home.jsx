@@ -179,7 +179,7 @@ const Home = () => {
 				} ${screenOpacity ? 'opacity-70' : 'opacity-0'}`}
 			/>
 			<div
-				className={`fixed z-[51] w-full h-full sm:px-4 md:px-5 flex justify-center items-center ${
+				className={`fixed z-[51] w-full h-full px-4 md:px-5 flex justify-center items-center ${
 					videoDisplay ? 'block' : 'hidden'
 				} ${videoInPosition ? 'translate-y-0' : 'translate-y-[100vh]'}`}
 				style={{ transition: 'transform 350ms ease-out' }}
@@ -491,7 +491,7 @@ const Home = () => {
 						with DesignCamp
 					</h2>
 					<p className="text-[#878787] mt-4">Get benefits worth thousands of dollars!</p>
-					<div className="w-full mt-[60px] flex flex-col md:flex-row gap-[60px] items-center justify-center relative">
+					<div className="w-full mt-[60px] flex flex-col md:flex-row gap-[40px] lg:gap-[60px] items-center justify-center relative">
 						<div className="w-full max-w-[536px] bg-neutral-dark rounded-[20px] py-20 px-8 min-[300px]:px-12 sm:px-16 text-left h-[35rem] sm:h-[33.2rem] md:h-[35.625rem]">
 							<img
 								src={logoVector}
@@ -534,7 +534,7 @@ const Home = () => {
 								);
 							})}
 						</div>
-						<div className="rounded-full bg-theme-yellow flex w-[130px] h-[130px] items-center justify-center font-bold text-4xl sm:text-5xl absolute top-1/2 translate-y-[-65%] min-[300px]:translate-y-[-50%]">
+						<div className="rounded-full bg-theme-yellow flex w-[105px] h-[105px] md:w-[115px] md:h-[115px] lg:w-[130px] lg:h-[130px] items-center justify-center font-bold text-4xl lg:text-5xl absolute top-1/2 translate-y-[-65%] min-[300px]:translate-y-[-50%]">
 							<p>VS</p>
 						</div>
 					</div>
@@ -632,7 +632,14 @@ const Home = () => {
 					maxWidth="xl"
 				>
 					<p>© 2023 CodePolitan. All&nbsp;rights&nbsp;reserved.</p>
-					<p className="mt-3 md:mt-0">Designed by KelasFullstack.id</p>
+					<a
+						href="https://www.figma.com/file/gvgLbjOscrzQlh3l2GUfkl/DesignCamp?type=design&node-id=0-1"
+						target='_blank'
+						rel='noopener noreferrer'
+						className="mt-3 md:mt-0 text-white hover:text-theme-yellow"
+					>
+						Designed by KelasFullstack.id
+					</a>
 				</Container>
 			</footer>
 		</>
